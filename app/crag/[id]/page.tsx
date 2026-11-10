@@ -255,8 +255,6 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
   )
 }
 
-}
-
 function CtaBanner({ label }: { label?: string }) {
   return (
     <div style={{
