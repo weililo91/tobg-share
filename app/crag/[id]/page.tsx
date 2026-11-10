@@ -255,12 +255,6 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
   )
 }
 
-function gradeColor(grade: string): string {
-  const n = parseInt(grade.replace('V', ''))
-  if (n <= 2) return '#34C759'
-  if (n <= 4) return '#FF9500'
-  if (n <= 6) return '#FF3B30'
-  return '#AF52DE'
 }
 
 function CtaBanner({ label }: { label?: string }) {
