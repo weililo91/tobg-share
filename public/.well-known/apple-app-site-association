@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.willy.TOBG",
+        "paths": [
+          "/crag/*",
+          "/area/*",
+          "/boulder/*"
+        ]
+      }
+    ]
+  }
+}
