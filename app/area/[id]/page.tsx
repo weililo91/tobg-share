@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchArea, storageUrl, APP_STORE_URL } from '@/lib/supabase'
-import type { Boulder, BoulderFace } from '@/lib/supabase'
+import type { Boulder } from '@/lib/supabase'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params

@@ -102,7 +102,7 @@ export default async function CragPage({ params }: { params: Promise<{ id: strin
       </div>
 
       {/* ─ Stats row ─ */}
-      <a href={APP_STORE_URL} style={{ display: 'block', background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', display: 'flex', gap: 24 }}>
+      <a href={APP_STORE_URL} style={{ display: 'flex', background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', gap: 24 }}>
         <StatItem value={crag.areas.length} label="個區域" />
         <div style={{ width: 1, background: 'var(--sep)' }} />
         <StatItem value={totalBoulders} label="顆石頭" />
@@ -198,9 +198,6 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
     .slice()
     .sort((a, b) => a.sort_order - b.sort_order)[0]
   const coverImg = storageUrl(coverFace?.photo_path)
-
-  const isFirst = index === 0
-  const isLast = index === -1 // will never be last here
 
   return (
     <a
