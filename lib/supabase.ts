@@ -102,7 +102,7 @@ export async function fetchCrag(id: string): Promise<Crag | null> {
     .single()
 
   if (error || !data) return null
-  return data as Crag
+  return data as unknown as Crag
 }
 
 /** 查詢 area 詳情（for /area/[id]）— 也帶出所屬 crag 的基本資訊 */
@@ -129,7 +129,7 @@ export async function fetchArea(id: string): Promise<(Area & { crag: Pick<Crag, 
     .single()
 
   if (error || !data) return null
-  return data as Area & { crag: Pick<Crag, 'id' | 'name'> }
+  return data as unknown as Area & { crag: Pick<Crag, 'id' | 'name'> }
 }
 
 /** 查詢 boulder 詳情（for /boulder/[id]） */
@@ -158,5 +158,5 @@ export async function fetchBoulder(id: string): Promise<(Boulder & {
     .single()
 
   if (error || !data) return null
-  return data as Boulder & { area: { id: string; name: string; crag: Pick<Crag, 'id' | 'name'> } }
+  return data as unknown as Boulder & { area: { id: string; name: string; crag: Pick<Crag, 'id' | 'name'> } }
 }
