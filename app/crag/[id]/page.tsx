@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchCrag, storageUrl, APP_STORE_URL } from '@/lib/supabase'
 import type { Crag, Area, Boulder } from '@/lib/supabase'
+import OpenInAppBar from '@/app/components/OpenInAppBar'
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -102,7 +103,7 @@ export default async function CragPage({ params }: { params: Promise<{ id: strin
       </div>
 
       {/* ─ Stats row ─ */}
-      <a href={APP_STORE_URL} style={{ display: 'flex', background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', gap: 24 }}>
+      <a href={APP_STORE_URL} style={{ display: 'block', background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', display: 'flex', gap: 24 }}>
         <StatItem value={crag.areas.length} label="個區域" />
         <div style={{ width: 1, background: 'var(--sep)' }} />
         <StatItem value={totalBoulders} label="顆石頭" />
@@ -137,7 +138,7 @@ export default async function CragPage({ params }: { params: Promise<{ id: strin
       <div style={{ height: 100 }} />
 
       {/* ─ Fixed CTA ─ */}
-      <CtaBanner label={`在 App 中查看「${crag.name}」`} />
+      <OpenInAppBar entity="crag" id={id} />
     </>
   )
 }
@@ -199,6 +200,9 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
     .sort((a, b) => a.sort_order - b.sort_order)[0]
   const coverImg = storageUrl(coverFace?.photo_path)
 
+  const isFirst = index === 0
+  const isLast = index === -1 // will never be last here
+
   return (
     <a
       href={APP_STORE_URL}
@@ -250,6 +254,14 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
       </svg>
     </a>
   )
+}
+
+function gradeColor(grade: string): string {
+  const n = parseInt(grade.replace('V', ''))
+  if (n <= 2) return '#34C759'
+  if (n <= 4) return '#FF9500'
+  if (n <= 6) return '#FF3B30'
+  return '#AF52DE'
 }
 
 function CtaBanner({ label }: { label?: string }) {

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchArea, storageUrl, APP_STORE_URL } from '@/lib/supabase'
-import type { Boulder } from '@/lib/supabase'
+import type { Boulder, BoulderFace } from '@/lib/supabase'
+import OpenInAppBar from '@/app/components/OpenInAppBar'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
@@ -65,7 +66,7 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
 
       <div style={{ height: 100 }} />
 
-      <CtaBanner label={`在 App 中查看「${displayName}」`} />
+      <OpenInAppBar entity="area" id={id} />
     </>
   )
 }

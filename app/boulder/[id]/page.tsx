@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchBoulder, storageUrl, APP_STORE_URL } from '@/lib/supabase'
 import type { BoulderFace, Route } from '@/lib/supabase'
+import OpenInAppBar from '@/app/components/OpenInAppBar'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
@@ -88,7 +89,7 @@ export default async function BoulderPage({ params }: { params: Promise<{ id: st
 
       <div style={{ height: 100 }} />
 
-      <CtaBanner boulderName={boulder.name} routeCount={allRoutes.length} />
+      <OpenInAppBar entity="boulder" id={id} />
     </>
   )
 }
