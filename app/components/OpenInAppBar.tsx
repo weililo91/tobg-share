@@ -29,20 +29,19 @@ export default function OpenInAppBar({ entity, id }: { entity: EntityType; id: s
       gap: '12px',
       zIndex: 100,
     }}>
-      {/* App icon placeholder */}
-      <div style={{
-        width: 44,
-        height: 44,
-        borderRadius: 10,
-        background: '#FF9500',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        fontSize: 22,
-      }}>
-        🧗
-      </div>
+      {/* App icon */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/app-icon.jpg"
+        alt="TOBG"
+        width={44}
+        height={44}
+        style={{
+          borderRadius: 10,
+          flexShrink: 0,
+          objectFit: 'cover',
+        }}
+      />
 
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ color: '#FFFFFF', fontSize: 15, fontWeight: 600, lineHeight: 1.2 }}>
