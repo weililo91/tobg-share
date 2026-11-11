@@ -103,7 +103,7 @@ export default async function CragPage({ params }: { params: Promise<{ id: strin
       </div>
 
       {/* ─ Stats row ─ */}
-      <a href={APP_STORE_URL} style={{ display: 'block', background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', display: 'flex', gap: 24 }}>
+      <a href={APP_STORE_URL} style={{ background: 'var(--card)', margin: '0 16px', borderRadius: 'var(--r-card)', padding: '14px 16px', display: 'flex', gap: 24 }}>
         <StatItem value={crag.areas.length} label="個區域" />
         <div style={{ width: 1, background: 'var(--sep)' }} />
         <StatItem value={totalBoulders} label="顆石頭" />
@@ -254,14 +254,6 @@ function BoulderRow({ boulder, index }: { boulder: Boulder; index: number }) {
       </svg>
     </a>
   )
-}
-
-function gradeColor(grade: string): string {
-  const n = parseInt(grade.replace('V', ''))
-  if (n <= 2) return '#34C759'
-  if (n <= 4) return '#FF9500'
-  if (n <= 6) return '#FF3B30'
-  return '#AF52DE'
 }
 
 function CtaBanner({ label }: { label?: string }) {
